@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html ng-app="twitchViewer">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+	<!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+	<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+	<title>Twitch Viewer</title>
+		<!-- Stylesheets -->
+	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="app.css">
+	<script src="/libraries.js"></script>
+	<script src="/app.js"></script>
+	<script>require('initialize');</script>
+</head>
+<body>
+	<div ng-controller="ViewController as viewer">
+		<header>
+			<h1 id="title">twitch channels</h1>
+			<ul class="nav nav-pills pull-right">
+				<li role="presentation">
+					<a href="#" ng-class="{active: filterList == 'all'}" ng-click="filter = 'all'">All</a>
+				</li>
+				<li role="presentation">
+					<a href="#" ng-class="{active: filterList == 'online'}" ng-click="filter = 'online'">Online</a>
+				</li>
+				<li role="presentation">
+					<a href="#" ng-class="{active: filterList == 'offline'}" ng-click="filter = 'offline'">Offline</a>
+				</li>
+			</ul>
+			<form>
+				<input ng-model="searchText" type="text" placeholder="Search List"/>
+			</form>
+		</header>
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-3" ng-repeat="user in userData | streaming:filter | filter:searchText | orderBy:isStreaming" ng-click="goToProfile(user)">
+					<div class="panel panel-default" ng-class="user.streams.stream ? 'online' : 'offline'">
+						<div class="panel-body">
+							<img ng-src={{user.logo}} class="user-block__logo" />
+								<span class="user-block__name">{{ user.display_name }}</span><br />
+							
+						</div>
+						<div class="panel-footer">
+								<span ng-show="user.streams.stream">Streaming Live: <strong>{{user.streams.stream.game}}</strong></span>
+								<span ng-show="user.streams.stream == null">Offline</span>
+								<span ng-show="user.error || user.streams.error">: User not available</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

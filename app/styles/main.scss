@@ -1,0 +1,117 @@
+$cl-main: teal;
+$cl-highlight: tomato;
+$font-stack: 'Open Sans', sans-serif;
+* {
+  box-sizing: border-box;
+}
+body {
+  background: #eeeeee;
+  overflow: scroll;
+}
+header {
+  padding: 2em 5%;
+  margin-bottom: 1em;
+  overflow: auto;
+  #title {
+    margin-top: 10px;
+    color: $cl-main;
+    font-size: 1.5em;
+    display: inline-block;
+    font-family: $font-stack;
+    font-weight: 700;
+  }
+  form {
+    display: inline-block;
+    float: right;
+    margin-right: 20px;
+    input {
+      background: none;
+      padding: 0.75em;
+      color: dimgrey;
+      border: {
+        top: 1px solid rgba(0,0,0,0);
+        left: 1px solid rgba(0,0,0,0);
+        right: 1px solid rgba(0,0,0,0);
+        bottom: 1px solid $cl-highlight;
+        border-radius: 0;
+        -moz-border-radius: 0;
+        -webkit-border-radius: 0;
+      }
+      &:focus {
+        outline: none;
+        border: 1px solid $cl-highlight;
+        border-radius: 50px;
+        -moz-border-radius: 50px;
+        -webkit-border-radius: 50px;
+        transition: all 0.5s ease;
+      }
+    }
+  }
+}
+.nav > li > a {
+  color: tomato;
+  &:hover {
+    color: white;
+    background: tomato;
+  }
+}
+
+.active {
+  color: white !important;
+  background: tomato !important;
+}
+
+.panel {
+	cursor: pointer;
+}
+
+.panel:hover {
+	box-shadow: 3px 3px 3px lightgrey;
+}
+
+.panel-body {
+  text-align: center;
+  height: 10em;
+}
+.user-block__logo {
+  width: 75px;
+  border-radius: 10px;
+}
+.user-block__name {
+  padding-top: 20px;
+  display: block;
+  font-family: $font-stack;
+  font-weight: 600;
+}
+
+.panel-footer {
+  font-family: $font-stack;
+  font-size: 12px;
+}
+
+.offline {
+  border: 1px solid tomato;
+  .panel-footer {
+    background: tomato;
+    color: darken(tomato, 30%);
+    text-transform: uppercase;
+  }
+}
+
+.online {
+  border: 1px solid teal;
+  .panel-footer {
+    background: teal;
+    color: darken(teal, 30%);
+    text-transform: uppercase;
+  }
+}
+
+@media screen and (max-width: 620px){
+  #title, .filters, form {
+    display: block;
+  }
+  .filters {
+    margin-top: 1em;
+  }
+}
