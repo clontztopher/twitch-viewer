@@ -5,8 +5,9 @@
 'use strict';
 
 var angular = require('angular');
+var ngAnimate = require('angular-animate');
 
-angular.module('twitchViewer', []);
+angular.module('twitchViewer', [ngAnimate]);
 
 angular.
 	module('twitchViewer').

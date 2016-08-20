@@ -8,5 +8,12 @@ module.exports = {
     	}
     },
     stylesheets: {joinTo: 'app.css'}
+  },
+  plugins: {
+  	postcss: {
+  		processors: [
+  			require('autoprefixer')(['last 8 versions'])
+  		]
+  	}
   }
 }

@@ -35,7 +35,7 @@
 		</header>
 		<div class="container">
 			<div class="row">
-				<div class="col-sm-3" ng-repeat="user in userData | streaming:filter | filter:searchText | orderBy:isStreaming" ng-click="goToProfile(user)">
+				<div class="col-sm-3 repeated-panel" ng-repeat="user in userData | streaming:filter | filter:searchText | orderBy:isStreaming" ng-click="goToProfile(user)">
 					<div class="panel panel-default" ng-class="user.streams.stream ? 'online' : 'offline'">
 						<div class="panel-body">
 							<img ng-src={{user.logo}} class="user-block__logo" />
