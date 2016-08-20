@@ -20,13 +20,13 @@
 			<h1 id="title">twitch channels</h1>
 			<ul class="nav nav-pills pull-right">
 				<li role="presentation">
-					<a href="#" ng-class="{active: filterList == 'all'}" ng-click="filter = 'all'">All</a>
+					<a href="#" ng-class="{active: filterList == 'all'}" ng-click="filterList = 'all'">All</a>
 				</li>
 				<li role="presentation">
-					<a href="#" ng-class="{active: filterList == 'online'}" ng-click="filter = 'online'">Online</a>
+					<a href="#" ng-class="{active: filterList == 'online'}" ng-click="filterList = 'online'">Online</a>
 				</li>
 				<li role="presentation">
-					<a href="#" ng-class="{active: filterList == 'offline'}" ng-click="filter = 'offline'">Offline</a>
+					<a href="#" ng-class="{active: filterList == 'offline'}" ng-click="filterList = 'offline'">Offline</a>
 				</li>
 			</ul>
 			<form>
@@ -35,7 +35,7 @@
 		</header>
 		<div class="container">
 			<div class="row">
-				<div class="col-sm-3 repeated-panel" ng-repeat="user in userData | streaming:filter | filter:searchText | orderBy:isStreaming" ng-click="goToProfile(user)">
+				<div class="col-sm-3 repeated-panel" ng-repeat="user in userData | streaming:filterList | filter:searchText | orderBy:isStreaming" ng-click="goToProfile(user)">
 					<div class="panel panel-default" ng-class="user.streams.stream ? 'online' : 'offline'">
 						<div class="panel-body">
 							<img ng-src={{user.logo}} class="user-block__logo" />
